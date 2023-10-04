@@ -12,6 +12,24 @@ class TreeNode {
    * Returns sum as an integer. */
   sumValues() {
 
+    let toVisitStack = [this];
+    let sum = 0;
+
+    console.log('******toVisitStack', toVisitStack)
+    console.log(sum);
+    while (toVisitStack.length){
+      let current = toVisitStack.pop();
+
+    //   // sum += current.val;
+    //   // console.log('******sum', sum)
+
+      for (let child of current.children){
+        // toVisitStack.push(child);
+        return current += toVisitStack.push(child)
+      }
+
+    }
+
   }
 
   /** countEvens(): starting from the invoking node and moving through its
