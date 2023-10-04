@@ -14,23 +14,17 @@ class TreeNode {
     let sum = 0;
     let toVisitStack = [this];
 
-    console.log('is this running')
-
-    console.log('######toVisitStack', toVisitStack);
     while (toVisitStack.length){
       let current = toVisitStack.pop();
 
-      console.log('******current', current)
-
       sum += current.val;
-
-      console.log('******sum', sum)
 
       for (let child of current.children){
         toVisitStack.push(child);
       }
 
     }
+
     return sum;
 
   }
@@ -40,6 +34,23 @@ class TreeNode {
    * an integer. */
   countEvens() {
 
+    let toVisitStack = [this];
+    let count = 0;
+
+    while (toVisitStack.length){
+      let current = toVisitStack.pop();
+
+      console.log('****curent', current)
+
+      if (current.val % 2 === 0){
+        count++;
+        console.log('count', count)
+      }
+      for (let child of current.children){
+        toVisitStack.push(child);
+      }
+    }
+    return count;
   }
 
   /** numGreater(lowerBound): starting from the invoking node and moving through
@@ -65,6 +76,9 @@ class Tree {
 
   /** countEvens(): count all nodes in the tree that have even values. */
   countEvens() {
+
+    if (this.root === null) return 0;
+    return this.root.countEvens();
 
   }
 
