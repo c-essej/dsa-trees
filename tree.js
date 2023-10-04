@@ -40,11 +40,9 @@ class TreeNode {
     while (toVisitStack.length){
       let current = toVisitStack.pop();
 
-      console.log('****curent', current)
 
       if (current.val % 2 === 0){
         count++;
-        console.log('count', count)
       }
       for (let child of current.children){
         toVisitStack.push(child);
@@ -57,7 +55,21 @@ class TreeNode {
    * its children, return a count of the number of nodes whose value is greater
    * than lowerBound. */
   numGreater(lowerBound){
+    let count = 0;
+    let toVisitStack = [this];
 
+    while (toVisitStack.length) {
+      let current = toVisitStack.pop();
+
+      if (current.val > lowerBound) {
+        count++;
+      }
+
+      for (let child of current.children) {
+        toVisitStack.push(child);
+      }
+    }
+    return count;
   }
 }
 
@@ -85,6 +97,9 @@ class Tree {
   /** numGreater(lowerBound): return a count of the number of nodes
    * whose value is greater than lowerBound. */
   numGreater(lowerBound) {
+
+    if (this.root === null) return 0;
+    return this.root.numGreater(lowerBound);
 
   }
 }
