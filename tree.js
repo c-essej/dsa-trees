@@ -11,24 +11,27 @@ class TreeNode {
   /** sumValues(): add up all values of invoking node and its children.
    * Returns sum as an integer. */
   sumValues() {
-
-    let toVisitStack = [this];
     let sum = 0;
+    let toVisitStack = [this];
 
-    console.log('******toVisitStack', toVisitStack)
-    console.log(sum);
+    console.log('is this running')
+
+    console.log('######toVisitStack', toVisitStack);
     while (toVisitStack.length){
       let current = toVisitStack.pop();
 
-    //   // sum += current.val;
-    //   // console.log('******sum', sum)
+      console.log('******current', current)
+
+      sum += current.val;
+
+      console.log('******sum', sum)
 
       for (let child of current.children){
-        // toVisitStack.push(child);
-        return current += toVisitStack.push(child)
+        toVisitStack.push(child);
       }
 
     }
+    return sum;
 
   }
 
@@ -54,6 +57,9 @@ class Tree {
 
   /** sumValues(): add up all values in the tree. */
   sumValues() {
+
+    if (this.root === null) return 0;
+    return this.root.sumValues();
 
   }
 
